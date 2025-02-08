@@ -13,6 +13,7 @@ const morgan = require('morgan')
 const path = require('path')
 const isSignedIn = require('./middleware/is-signed-in')
 const passUserToView = require('./middleware/pass-user-to-view')
+const router = express.Router();
 
 const port = process.env.PORT ? process.env.PORT : '3000'
 
@@ -41,6 +42,10 @@ app.use(session({
 }))
 app.use(passUserToView)
 
+
+const authController = require('./controllers/auth.js');
+const foodsController = require('./controllers/foods.js');
+
 //CONTROLLERS
 const pagesCtrl = require('./controllers/pages')
 const authCtrl = require('./controllers/auth')
@@ -54,7 +59,12 @@ app.post('/auth/sign-up', authCtrl.addUser)
 app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
-app.get('/vip-lounge', isSignedIn, vipCtrl.welcome)
+app.use(isSignedIn) // anything under here, the user must be signed in
+// app.use('/auth', authController)
+app.use('/users/:userId/foods',foodsController)
+// app.get('/vip-lounge', isSignedIn, vipCtrl.welcome)
+app.get('/users/:userId/foods', foodsController)
+app.get('/users/:userId/foods/new', foodsController)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)
