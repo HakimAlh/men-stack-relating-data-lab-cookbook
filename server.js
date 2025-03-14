@@ -61,10 +61,8 @@ app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
 app.use(isSignedIn) // anything under here, the user must be signed in
 // app.use('/auth', authController)
-app.use('/users/:userId/foods',foodsController)
-// app.get('/vip-lounge', isSignedIn, vipCtrl.welcome)
-app.get('/users/:userId/foods', foodsController)
-app.get('/users/:userId/foods/new', foodsController)
+app.get('/users/:userId/foods', foodsController.index)
+app.get('/users/:userId/foods/new', foodsController.newFood)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)
