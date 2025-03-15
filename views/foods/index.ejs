@@ -1,6 +1,20 @@
 <%- include('../partials/head')%>
 
-<h1>Welcome to my Pantry</h1>
+<h1></h1>Pantry</h1>
+<div class="card-container">
+    <% pantry.forEach(food => { %>
+            <div class="card mt-2" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title"><%= food.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <%= food.description %>
+                    </h6>
 
+
+                    <% }) %>
+                </div>
+            </div>
+    <%  %>
+</div>
 
 <%- include('../partials/footer') %>
