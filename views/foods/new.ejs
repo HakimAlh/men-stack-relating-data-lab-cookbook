@@ -1,6 +1,20 @@
 <%- include('../partials/head')%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Cookbook recipe</title>
+  </head>
 
-<h1>New Food</h1>
-
+  <body>
+    <h1>Add a food of your choice!</h1>
+    <form action="/foods/" method="POST">
+      <label for="name">Food Name:</label>
+      <input type="text" name="name" id="name" />
+      <button type="submit">Add your amazing magnificent state of the art jaw dropping cookbook!!</button>
+    </form>
+  </body>
+</html>
 
 <%- include('../partials/footer') %>

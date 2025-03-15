@@ -49,7 +49,9 @@ const foodsController = require('./controllers/foods.js');
 //CONTROLLERS
 const pagesCtrl = require('./controllers/pages')
 const authCtrl = require('./controllers/auth')
-const vipCtrl = require('./controllers/vip')
+
+//MIDDLWARE
+const Food = require('./models/user.js')
 
 
 //ROUTE HANDLERS
@@ -59,10 +61,22 @@ app.post('/auth/sign-up', authCtrl.addUser)
 app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
+
 app.use(isSignedIn) // anything under here, the user must be signed in
-// app.use('/auth', authController)
+
 app.get('/users/:userId/foods', foodsController.index)
 app.get('/users/:userId/foods/new', foodsController.newFood)
+
+// CRUD
+app.post("/foods", async (req, res) => {
+    if (req.body.isReadyToEat === "on") {
+      req.body.isReadyToEat = true;
+    } else {
+      req.body.isReadyToEat = false;
+    }
+    await Food.create(req.body);
+    res.redirect("/users/:userId/foods/");
+  });
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)
