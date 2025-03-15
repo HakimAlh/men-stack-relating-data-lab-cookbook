@@ -62,6 +62,35 @@ const deleteFood = async (req, res) => {
   }
 }
 
-// router logic will go here - will be built later on in the lab
+const edit = async (req, res) => {
+  try {
+      const currentUser = await User.findById(req.params.userId)
+      const food = currentUser.pantry.id(req.params.foodId)
+      res.render('foods/edit.ejs', {
+          title: food.title,
+          food,
+      })
+  } catch (err) {
+      console.log(err)
+      res.redirect('/')
+  }
+}
 
-module.exports = {User, newFood, index, foodCreate, show, deleteFood}
+const update = async (req, res) => {
+  try {
+      const currentUser = await User.findById(req.params.userId)
+      const food = currentUser.pantry.id(req.params.foodId)
+
+      food.set(req.body)
+      await currentUser.save()
+
+      res.redirect(`/users/${currentUser._id}/foods/${req.params.foodId}`)
+
+  } catch (err) {
+      console.log(err)
+      res.redirect('/')
+  }
+}
+
+
+module.exports = {User, newFood, index, foodCreate, show, deleteFood, edit, update}

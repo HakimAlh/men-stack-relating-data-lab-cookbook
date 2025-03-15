@@ -1,0 +1,16 @@
+<%- include('../partials/head') %>
+    <div class="container">
+
+        <h1>Editing <%= food.title %></h1>
+        <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
+            <label for="">Company:</label>
+            <input type="text" name="" value="<%= food.title %>">
+            <label for="">Title:</label>
+            <input type="text" name="" value="<%= food.description %>">
+            <label for="">Notes:</label>
+            <textarea name="" id=""><%= food.recipe %></textarea>
+            <button type="submit" class="btn btn-primary">Update cookbook</button>
+        </form>
+        
+    </div>
+<%- include('../partials/footer') %>

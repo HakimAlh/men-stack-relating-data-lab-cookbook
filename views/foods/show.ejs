@@ -11,6 +11,8 @@
                     <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete this application</button>
                     </form>
+                    <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">
+                        <button type="submit" class="btn btn-warning">Edit</button>
 
                     <% } else { %>
                         <h5 class="card-title"><%= food.title %></h5>
