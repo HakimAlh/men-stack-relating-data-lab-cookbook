@@ -35,6 +35,33 @@ const User = require('../models/user.js');
       }
 }
 
+const show = async (req, res) => {
+  try {
+      const currentUser = await User.findById(req.params.userId)
+      const food = currentUser.pantry.id(req.params.foodId)
+      res.render('foods/show.ejs', {
+          title: food.title,
+          food,
+      })
+  } catch (err) {
+      console.log(err)
+      res.redirect('/')
+  }
+}
+
+const deleteFood = async (req, res) => {
+  try {
+      console.log('inside delete')
+      const currentUser = await User.findById(req.params.userId)
+      currentUser.food.id(req.params.foodId).deleteOne()
+      await currentUser.save()
+      res.redirect(`/users/${currentUser._id}/foods`)
+  } catch (err) {
+      console.log(err)
+      res.redirect('/')
+  }
+}
+
 // router logic will go here - will be built later on in the lab
 
-module.exports = {User, newFood, index, foodCreate}
+module.exports = {User, newFood, index, foodCreate, show, deleteFood}

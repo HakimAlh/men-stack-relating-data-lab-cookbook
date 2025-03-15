@@ -6,6 +6,7 @@
             <div class="card mt-2" style="width: 18rem">
                 <div class="card-body">
                     <h5 class="card-title"><%= food.title %></h5>
+                    <a href="/users/<%= user._id %>/foods/<%= food._id %>" class="card-link">Show more</a>
                     <h6 class="card-subtitle mb-2 text-muted">
                         <%= food.description %>
                     </h6>
