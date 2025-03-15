@@ -44,7 +44,7 @@ app.use(passUserToView)
 
 
 const authController = require('./controllers/auth.js');
-const foodsController = require('./controllers/foods.js');
+const foodsController = require('./controllers/food.js');
 
 //CONTROLLERS
 const pagesCtrl = require('./controllers/pages')
@@ -68,15 +68,7 @@ app.get('/users/:userId/foods', foodsController.index)
 app.get('/users/:userId/foods/new', foodsController.newFood)
 
 // CRUD
-app.post("/foods", async (req, res) => {
-    if (req.body.isReadyToEat === "on") {
-      req.body.isReadyToEat = true;
-    } else {
-      req.body.isReadyToEat = false;
-    }
-    await Food.create(req.body);
-    res.redirect("/users/:userId/foods/");
-  });
+app.post('/users/:userId/foods/', foodsController.foodCreate)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)
