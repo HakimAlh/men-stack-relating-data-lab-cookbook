@@ -70,7 +70,7 @@ app.get('/users/:userId/foods/new', foodsController.newFood)
 // CRUD
 app.post('/users/:userId/foods/', foodsController.foodCreate)
 app.get('/users/:userId/foods/:foodId', foodsController.show) 
-app.delete('/users/:userId/foods/:foodId', foodsController.deleteFood)
+app.post('/users/:userId/foods/:foodId', foodsController.deleteFood)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)

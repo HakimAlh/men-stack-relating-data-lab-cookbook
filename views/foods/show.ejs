@@ -2,16 +2,24 @@
 
 <h1></h1>Details of Pantry</h1>
 <div class="card-container">
+    <% if (user) { %>
                     <h5 class="card-title"><%= food.title %></h5>
+                    <%= food.title %>
                     <%= food.description %>
                     <h6 class="card-subtitle mb-2 text-muted">
                     </h6>
+                    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete this application</button>
+                    </form>
 
-
-                    <%  %>
+                    <% } else { %>
+                        <h5 class="card-title"><%= food.title %></h5>
+                        <%= food.description %>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                        </h6>
+                        <% } %>
                 </div>
             </div>
-    <%  %>
 </div>
 
 <%- include('../partials/footer') %>

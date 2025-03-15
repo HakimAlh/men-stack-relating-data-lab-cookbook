@@ -53,7 +53,7 @@ const deleteFood = async (req, res) => {
   try {
       console.log('inside delete')
       const currentUser = await User.findById(req.params.userId)
-      currentUser.food.id(req.params.foodId).deleteOne()
+      currentUser.pantry.id(req.params.foodId).deleteOne()
       await currentUser.save()
       res.redirect(`/users/${currentUser._id}/foods`)
   } catch (err) {
