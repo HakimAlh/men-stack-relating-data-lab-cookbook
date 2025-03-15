@@ -2,7 +2,6 @@
 
 <h1></h1>Details of Pantry</h1>
 <div class="card-container">
-    <% if (user) { %>
                     <h5 class="card-title"><%= food.title %></h5>
                     <%= food.title %>
                     <%= food.description %>
@@ -13,13 +12,6 @@
                     </form>
                     <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">
                         <button type="submit" class="btn btn-warning">Edit</button>
-
-                    <% } else { %>
-                        <h5 class="card-title"><%= food.title %></h5>
-                        <%= food.description %>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                        </h6>
-                        <% } %>
                 </div>
             </div>
 </div>

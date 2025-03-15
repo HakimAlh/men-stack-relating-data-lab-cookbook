@@ -35,6 +35,12 @@ const User = require('../models/user.js');
       }
 }
 
+  const pantry = async (req, res) => {
+    res.render('./foods/pantry.ejs', {
+      title: 'Pantry'
+    })
+  }
+
 const show = async (req, res) => {
   try {
       const currentUser = await User.findById(req.params.userId)
@@ -93,4 +99,4 @@ const update = async (req, res) => {
 }
 
 
-module.exports = {User, newFood, index, foodCreate, show, deleteFood, edit, update}
+module.exports = {User, newFood, index, foodCreate, show, deleteFood, edit, update, pantry}

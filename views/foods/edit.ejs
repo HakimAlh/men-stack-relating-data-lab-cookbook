@@ -3,11 +3,11 @@
 
         <h1>Editing <%= food.title %></h1>
         <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
-            <label for="">Company:</label>
-            <input type="text" name="" value="<%= food.title %>">
-            <label for="">Title:</label>
-            <input type="text" name="" value="<%= food.description %>">
-            <label for="">Notes:</label>
+            <label for="title">Title:</label>
+            <input type="text" name="Food Title" value="<%= food.title %>">
+            <label for="description">Description:</label>
+            <input type="text" name="Food Description" value="<%= food.description %>">
+            <label for="recipe">Recipes:</label>
             <textarea name="" id=""><%= food.recipe %></textarea>
             <button type="submit" class="btn btn-primary">Update cookbook</button>
         </form>
