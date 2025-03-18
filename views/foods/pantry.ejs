@@ -1,20 +1,24 @@
-<%- include('../partials/head')%>
+<%- include('../partials/head') %>
+<div class="container">
+<h1>Community Pantries</h1>
+	<div class="card-container">
+		<% pantry.forEach(food => { %>
+                <div class="card mt-2" style="width: 18rem">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= food.title %></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= food.description %>
+                        </h6>
+                        <p class="card-text"><%= food.recipe %></p>
 
-<h1></h1>Pantry</h1>
-<div class="card-container">
-    <% pantry.forEach(food => { %>
-            <div class="card mt-2" style="width: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title"><%= food.title %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        <%= food.description %>
-                    </h6>
+
+                        <a href="/users/<%= user._id %>/foods/<%= food._id %>" class="card-link">Show more</a>
 
 
-                    <% }) %>
+                        
+                    </div>
                 </div>
-            </div>
-    <%  %>
+		<% }) %>
+	</div>
 </div>
-
 <%- include('../partials/footer') %>

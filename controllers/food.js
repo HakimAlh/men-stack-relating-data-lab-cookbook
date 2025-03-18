@@ -27,6 +27,7 @@ const foodCreate = async (req, res) => {
 const index = async (req, res) => {
 	try {
 		const currentUser = await User.findById(req.params.userId);
+    console.log('pantry: ', currentUser.pantry)
 		res.render("foods/index.ejs", {
 			title: "Food",
 			pantry: currentUser.pantry,
@@ -35,12 +36,6 @@ const index = async (req, res) => {
 		console.log(err);
 		res.redirect("/");
 	}
-};
-
-const pantry = async (req, res) => {
-	res.render("./foods/pantry.ejs", {
-		title: "Pantry",
-	});
 };
 
 const show = async (req, res) => {
@@ -110,5 +105,4 @@ module.exports = {
 	deleteFood,
 	edit,
 	update,
-	pantry,
 };

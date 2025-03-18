@@ -50,6 +50,7 @@ const foodsController = require('./controllers/food.js');
 //CONTROLLERS
 const pagesCtrl = require('./controllers/pages')
 const authCtrl = require('./controllers/auth')
+const userCtrl = require('./controllers/users')
 
 //MIDDLWARE
 const Food = require('./models/user.js')
@@ -62,13 +63,15 @@ app.post('/auth/sign-up', authCtrl.addUser)
 app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
-app.get('/users/foods/pantry', foodsController.pantry)
+app.get('/users/:userId/foods', userCtrl.index)
+
 app.use(isSignedIn) // anything under here, the user must be signed in
 
+
 app.get('/users/:userId/foods', foodsController.index)
-app.get('/users/:userId/foods/new', foodsController.newFood)
 
 // CRUD
+app.get('/users/:userId/foods/new', foodsController.newFood)
 app.post('/users/:userId/foods/', foodsController.foodCreate)
 app.get('/users/:userId/foods/:foodId', foodsController.show) 
 app.delete('/users/:userId/foods/:foodId', foodsController.deleteFood)
