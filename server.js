@@ -63,7 +63,6 @@ app.post('/auth/sign-up', authCtrl.addUser)
 app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
-app.get('/users/:userId/foods', userCtrl.index)
 
 app.use(isSignedIn) // anything under here, the user must be signed in
 

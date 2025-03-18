@@ -8,7 +8,7 @@
                     <%= food.company %>
                 </h6>
                 <p class="card-text"><%= food.notes %></p>
-                <a href="/users/<%= user._id %>/applications" class="card-link">Go Back</a>
+                <a href="/users/<%= user._id %>/foods" class="card-link">Go Back</a>
                 <div class="d-flex justify-content-between mt-3">
                 <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
                     <button type="submit" class="btn btn-danger">Delete this food</button>
